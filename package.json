@@ -20,7 +20,6 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "pnpm run -C docs serve",
     "docs:preview": "vitepress preview docss",
-    "upload:build": "pnpm run  -C packages/upload-sdk build",
     "build": "pnpm run -C internal/build start",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
