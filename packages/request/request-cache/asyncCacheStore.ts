@@ -1,9 +1,9 @@
 export interface AsyncCacheStore {
-  get<T>(key: string): Promise<T | undefined>
+  get<T>(key: string): Promise<T | undefined>;
 
-  set<T>(key: string, value: T): Promise<void>
+  set<T>(key: string, value: T): Promise<void>;
 
-  has(key: string): Promise<boolean>
+  has(key: string): Promise<boolean>;
 
-  delete(key: string): Promise<void>
+  delete(key: string): Promise<void>;
 }

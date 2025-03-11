@@ -1,1 +1,1 @@
-export * from './erm-form'
+export * from './erm-form';

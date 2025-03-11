@@ -2,8 +2,8 @@ export const menu = {
   text: '技术',
   link: '/zh-CN/coder/',
   activeMatch: '/zh-CN/coder/',
-}
-const path = '/zh-CN/coder/'
+};
+const path = '/zh-CN/coder/';
 const mdList = [
   {
     text: '组件库',
@@ -27,12 +27,12 @@ const mdList = [
       },
     ],
   },
-]
+];
 export const coder = {
   menu,
   path,
   mdList,
   config: { [path]: mdList },
-}
+};
 
-export default coder
+export default coder;

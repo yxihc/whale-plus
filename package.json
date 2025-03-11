@@ -28,8 +28,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json --max-warnings 0 && pretty-quick --check --branch dev",
-    "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.json && pretty-quick --branch dev",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json --max-warnings 0 && pretty-quick --check --branch main",
+    "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.json && pretty-quick --branch main",
     "build:theme": "pnpm run -C packages/theme-chalk build"
   },
   "dependencies": {

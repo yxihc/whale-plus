@@ -1,6 +1,6 @@
-import coder from './coder'
-import component from './component'
-import guide from './guide'
+import coder from './coder';
+import component from './component';
+import guide from './guide';
 export const nav = [
   guide.menu,
   component.menu,
@@ -36,4 +36,4 @@ export const nav = [
     text: 'Version',
     items: [{ text: '1.0', link: '/guide/' }],
   },
-]
+];

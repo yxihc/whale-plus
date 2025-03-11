@@ -1,2 +1,2 @@
-export * from './request-cache'
-export * from './request-core'
+export * from './request-cache';
+export * from './request-core';

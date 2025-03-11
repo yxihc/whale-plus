@@ -1,1 +1,1 @@
-export * from '@whale/components'
+export * from '@whale/components';

@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 // import {publishArticle} from '@whale-requset/request-lib-bus'
 // console.log(publishArticle)
 
-import { regUser } from '@whale-requset/request-lib/request-lib-bus'
+import { regUser } from '@whale-requset/request-lib/request-lib-bus';
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
 // console.log(regUser)
 regUser('https://muzi.hzwmhp.com:457/htalk1/api/food/getCategoryList')
   .then((res: any) => {
-    console.log(res)
+    console.log(res);
   })
   .catch((error: any) => {
-    console.log(error)
-  })
+    console.log(error);
+  });
 </script>
 
 <template>
