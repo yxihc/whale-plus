@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@whale/eslint-config"]
+  "extends": ["@whale-plus/eslint-config"]
 }

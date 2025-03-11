@@ -7,5 +7,5 @@ export type TranslatePair = {
 
 export type Language = {
   name: string;
-  wl: TranslatePair;
+  wp: TranslatePair;
 };

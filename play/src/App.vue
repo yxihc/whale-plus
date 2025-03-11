@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import WlDialog from '../src/components/wl-dialog/src/wlDialog'
-WlDialog.alert('asds')
+// WlDialog.alert('asds')
 // import { ElMessage, ElMessageBox } from 'element-plus'
 // ElMessageBox.alert('hello world', 'title', {
 //   confirmButtonText: '确定',
