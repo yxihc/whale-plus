@@ -9,7 +9,7 @@ import rename from 'gulp-rename';
 import consola from 'consola';
 import postcss from 'postcss';
 import cssnano from 'cssnano';
-import { wlOutput } from '@whale/build/src/utils/paths';
+import { wlOutput } from '@whale-plus/build/src/utils/paths';
 
 const distFolder = path.resolve(__dirname, 'dist');
 const distBundle = path.resolve(wlOutput, 'theme-chalk');

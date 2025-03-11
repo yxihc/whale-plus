@@ -9,7 +9,6 @@ import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild';
 import { rollup } from 'rollup';
 import glob from 'fast-glob';
 import { camelCase, upperFirst } from 'lodash-es';
-import { version } from '../../../../packages/whale/version';
 import {
   PKG_BRAND_NAME,
   PKG_CAMELCASE_LOCAL_NAME,
@@ -22,6 +21,7 @@ import {
   writeBundles,
 } from '../utils/rollup';
 import { localeRoot, wlOutput, wlRoot } from '../utils/paths';
+import { version } from '../../../../packages/whale-plus/version';
 import type { Plugin } from 'rollup';
 import type { TaskFunction } from 'gulp';
 

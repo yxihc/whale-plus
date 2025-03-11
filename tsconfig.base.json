@@ -17,7 +17,7 @@
     "types": [],
     "paths": {
       "@whale/*": ["packages/*"],
-      "whale": ["packages/whale"]
+      "whale": ["packages/whale-plus"]
     }
   }
 }

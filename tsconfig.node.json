@@ -11,8 +11,8 @@
     "internal/**/*.json",
     "scripts/**/*",
     "packages/theme-chalk/*",
-    "packages/whale/version.ts",
-    "packages/whale/package.json"
+    "packages/whale-plus/version.ts",
+    "packages/whale-plus/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

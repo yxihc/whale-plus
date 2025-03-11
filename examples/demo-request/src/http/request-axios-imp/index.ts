@@ -3,7 +3,7 @@ import {
   type RequestOptions,
   type Requestor,
   whaleRequest,
-} from '@whale/request';
+} from '@whale-plus/request';
 // import {
 //   type RequestOptions,
 //   type Requestor,

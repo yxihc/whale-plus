@@ -1,5 +1,5 @@
 {
-  "name": "@whale/eslint-config",
+  "name": "@whale-plus/eslint-config",
   "version": "0.0.2",
   "description": "ESLint Config",
   "license": "MIT",

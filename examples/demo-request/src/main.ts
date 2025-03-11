@@ -8,7 +8,7 @@ import {
   setGlobalOptions,
   useLocationStorageCache,
   useSessionStorageCache,
-} from '@whale/request';
+} from '@whale-plus/request';
 
 // import {
 //   inject,

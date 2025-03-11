@@ -1,18 +1,20 @@
 {
-  "name": "whale",
+  "name": "whale-plus",
   "version": "0.0.0-dev.1",
   "description": "A Component Library for Vue 3",
   "keywords": [
-    "whale",
-    "whaleui",
-    "whale library",
+    "whale-plus",
+    "whale-plus ui",
+    "whale-plus library",
     "ui framework",
     "ui",
-    "vue"
+    "vue",
+    "vue3",
+    "typescript"
   ],
   "homepage": "https://yxihc.github.io/whale/",
   "bugs": {
-    "url": "https://github.com/element-plus/element-plus/issues"
+    "url": "https://github.com/yxihc/whale-plus/issues"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -36,7 +38,7 @@
   "jsdelivr": "dist/index.full.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/element-plus/element-plus.git"
+    "url": "git+https://github.com/yxihc/whale-plus.git"
   },
   "publishConfig": {
     "access": "public"

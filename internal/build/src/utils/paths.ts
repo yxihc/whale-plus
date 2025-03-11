@@ -14,9 +14,9 @@ export const localeRoot = resolve(pkgRoot, 'locale');
 export const directiveRoot = resolve(pkgRoot, 'directives');
 
 //本项目路径
-export const wlRoot = resolve(pkgRoot, 'whale');
+export const wlRoot = resolve(pkgRoot, 'whale-plus');
 export const utilRoot = resolve(pkgRoot, 'utils');
-export const buildRoot = resolve(projRoot, 'internal', 'build-new');
+export const buildRoot = resolve(projRoot, 'internal', 'build');
 
 // Docs
 export const docsDirName = 'docs';
@@ -26,7 +26,7 @@ export const vpRoot = resolve(docRoot, '.vitepress');
 /** `/dist` */
 export const buildOutput = resolve(projRoot, 'dist');
 /** `/dist/whale` */
-export const wlOutput = resolve(buildOutput, 'whale');
+export const wlOutput = resolve(buildOutput, 'whale-plus');
 
 export const projPackage = resolve(projRoot, 'package.json');
 export const compPackage = resolve(compRoot, 'package.json');

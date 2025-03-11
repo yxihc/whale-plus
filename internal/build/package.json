@@ -1,5 +1,5 @@
 {
-  "name": "@whale/build",
+  "name": "@whale-plus/build",
   "version": "0.0.1",
   "private": true,
   "description": "Build Toolchain for Element Plus",

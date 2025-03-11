@@ -1,7 +1,7 @@
 // import { whaleRequest } from '@whale-requset/request-lib'
 
 // import { whaleRequest } from 'whale-request'
-import { whaleRequest } from '@whale/request';
+import { whaleRequest } from '@whale-plus/request';
 export function regUser(url: string) {
   return whaleRequest.get({
     url,

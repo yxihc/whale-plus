@@ -1,5 +1,5 @@
 {
-  "name": "@whale/utils",
+  "name": "@whale-plus/utils",
   "private": true,
   "license": "MIT",
   "main": "index.ts",
