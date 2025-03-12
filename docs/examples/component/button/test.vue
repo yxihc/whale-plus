@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const xxx = ref(0)
+defineOptions();
 </script>
 
 <template>

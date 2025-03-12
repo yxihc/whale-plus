@@ -2,8 +2,8 @@ export const menu = {
   text: '指南',
   link: '/zh-CN/guide/',
   activeMatch: '/zh-CN/guide/',
-}
-const path = '/zh-CN/guide/'
+};
+const path = '/zh-CN/guide/';
 const mdList = [
   {
     text: '基础',
@@ -31,12 +31,12 @@ const mdList = [
       },
     ],
   },
-]
+];
 const guide = {
   menu,
   path,
   mdList,
   config: { [path]: mdList },
-}
+};
 
-export default guide
+export default guide;

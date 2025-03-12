@@ -10,6 +10,6 @@
   </VPTeamPage>
 </template>
 <script setup lang="ts">
-import { VPTeamMembers, VPTeamPage, VPTeamPageTitle } from 'vitepress/theme'
-import { core } from '../../../_data/team.js'
+import { VPTeamMembers, VPTeamPage, VPTeamPageTitle } from 'vitepress/theme';
+import { core } from '../../../_data/team.js';
 </script>
