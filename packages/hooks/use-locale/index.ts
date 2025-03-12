@@ -2,7 +2,7 @@ import { computed, inject, isRef, ref, unref } from 'vue';
 import zhCn from '@whale-plus/locale/lang/zh-cn';
 import { get } from 'lodash-unified';
 import type { InjectionKey, Ref } from 'vue';
-import type { Language } from '@whale/locale';
+import type { Language } from '@whale-plus/locale';
 import type { MaybeRef } from '@vueuse/core';
 
 export type TranslatorOption = Record<string, string | number>;
@@ -15,7 +15,6 @@ export type LocaleContext = {
 
 export const useLocale = (localeOverrides?: Ref<Language | undefined>) => {
   const locale = localeOverrides || inject(localeContextKey, ref())!;
-  console.log(inject(localeContextKey, ref()).value);
   return buildLocaleContext(computed(() => locale.value || zhCn));
 };
 export const buildLocaleContext = (
