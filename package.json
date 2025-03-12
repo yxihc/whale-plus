@@ -38,6 +38,7 @@
     "@vue/shared": "^3.2.37",
     "@vueuse/core": "^9.1.0",
     "@whale-plus/components": "workspace:*",
+    "@whale-plus/components-pc": "workspace:*",
     "@whale-plus/hooks": "workspace:*",
     "@whale-plus/locale": "workspace:*",
     "@whale-plus/theme-chalk": "workspace:*",

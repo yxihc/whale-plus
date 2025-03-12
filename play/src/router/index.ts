@@ -3,8 +3,9 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 // 定义路由类型
 interface RouteConfig {
   path: string;
-  name: string;
-  component: () => Promise<any>;
+  name?: string;
+  redirect: string;
+  component?: () => Promise<any>;
 }
 
 // vue路由配置

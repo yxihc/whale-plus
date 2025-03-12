@@ -26,6 +26,9 @@ importers:
       '@whale-plus/components':
         specifier: workspace:*
         version: link:packages/components
+      '@whale-plus/components-pc':
+        specifier: workspace:*
+        version: link:packages/components-pc
       '@whale-plus/hooks':
         specifier: workspace:*
         version: link:packages/hooks
@@ -411,6 +414,12 @@ importers:
         version: 8.22.0
 
   packages/components:
+    dependencies:
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.4.5)
+
+  packages/components-pc:
     dependencies:
       vue:
         specifier: ^3.5.13

@@ -1,19 +1,18 @@
 <template>
-  <router-view></router-view>
+  <wp-config-provider :locale="locale">
+    <router-view></router-view>
+  </wp-config-provider>
 </template>
 <script setup lang="ts">
-import WlDialog from '../src/components/wl-dialog/src/wlDialog'
-// WlDialog.alert('asds')
-// import { ElMessage, ElMessageBox } from 'element-plus'
-// ElMessageBox.alert('hello world', 'title', {
-//   confirmButtonText: '确定',
-//   callback: action => {
-//     ElMessage({
-//       type: 'info',
-//       message: `action: ${action}`
-//     })
-//   }
-// })
+import { WpConfigProvider } from '@whale-plus/components-pc';
+import { computed, onMounted, ref } from 'vue';
+import { zhCn, en } from '@whale-plus/locale';
+
+const language = ref('zh-cn');
+const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en));
+onMounted(() => {
+  language.value = 'zh-cn';
+});
 </script>
 
 <style scoped></style>
