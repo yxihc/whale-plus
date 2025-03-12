@@ -13,7 +13,7 @@ const ogUrl = 'https://yxihc.github.io/whale'
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
 export default defineConfig({
   title: `${ogTitle}`,
-  base: '/whale/',
+  base: '/whale-plus/',
   description: ogDescription,
   lastUpdated: true,
   markdown: {
