@@ -1,3 +1,3 @@
 export default {
-  title: '主页',
-}
+  title: '函数式',
+};

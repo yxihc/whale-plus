@@ -54,7 +54,12 @@ const routes: RouteConfig[] = Object.keys(pageScripts)
   });
 
 // 添加生成的路由到常量路由
-constantRoutes.push(...routes);
+constantRoutes.push({
+  path: '/',
+  // redirect: '/home',
+  component: () => import('../layout/index.vue'),
+  children: routes,
+});
 
 // 创建路由实例
 const router = createRouter({

@@ -1,15 +1,14 @@
 import {
-  CSSProperties,
   defineComponent,
   h,
   nextTick,
+  onActivated,
   onMounted,
   onUnmounted,
-  PropType,
   reactive,
-  onActivated,
-  ref
-} from 'vue'
+  ref,
+} from 'vue';
+import type { CSSProperties, PropType } from 'vue';
 
 /**
  * 防抖函数
@@ -17,79 +16,81 @@ import {
  * @param {number} delay
  * @returns {() => void}
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 function debounce(fn: Function, delay: number): () => void {
-  let timer: NodeJS.Timeout
+  let timer: NodeJS.Timeout;
   return function (...args: any[]): void {
-    if (timer) clearTimeout(timer)
+    if (timer) clearTimeout(timer);
     timer = setTimeout(
       () => {
-        typeof fn === 'function' && fn.apply(null, args)
-        clearTimeout(timer)
+        typeof fn === 'function' && fn.apply(null, args);
+        clearTimeout(timer);
       },
       delay > 0 ? delay : 100
-    )
-  }
+    );
+  };
 }
 
 interface IState {
-  originalWidth: string | number
-  originalHeight: string | number
-  width?: string | number
-  height?: string | number
-  observer: null | MutationObserver
+  originalWidth: string | number;
+  originalHeight: string | number;
+  width?: string | number;
+  height?: string | number;
+  observer: null | MutationObserver;
 }
+
 type IAutoScale =
   | boolean
   | {
-      x?: boolean
-      y?: boolean
-    }
+      x?: boolean;
+      y?: boolean;
+    };
 
 export default defineComponent({
   name: 'VScaleScreen',
   props: {
     width: {
       type: [String, Number] as PropType<string | number>,
-      default: 1920
+      default: 1920,
     },
     height: {
       type: [String, Number] as PropType<string | number>,
-      default: 1080
+      default: 1080,
     },
     fullScreen: {
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     autoScale: {
       type: [Object, Boolean] as PropType<IAutoScale>,
-      default: true
+      default: true,
     },
     delay: {
       type: Number as PropType<number>,
-      default: 500
+      default: 500,
     },
     boxStyle: {
       type: Object as PropType<CSSProperties>,
-      default: () => ({})
+      default: () => ({}),
     },
     wrapperStyle: {
       type: Object as PropType<CSSProperties>,
-      default: () => ({})
+      default: () => ({}),
     },
     bodyOverflowHidden: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   setup(props, { slots }) {
-    let bodyOverflowHidden: string
+    let bodyOverflowHidden: string;
     const state = reactive<IState>({
       width: 0,
       height: 0,
       originalWidth: 0,
       originalHeight: 0,
-      observer: null
-    })
+      observer: null,
+    });
 
     const styles: Record<string, CSSProperties> = {
       box: {
@@ -97,7 +98,7 @@ export default defineComponent({
         backgroundSize: `100% 100%`,
         backgroundColor: `#000`,
         width: `100vw`,
-        height: `100vh`
+        height: `100vh`,
       },
       wrapper: {
         transitionProperty: `all`,
@@ -106,132 +107,133 @@ export default defineComponent({
         position: `relative`,
         overflow: `hidden`,
         zIndex: 100,
-        transformOrigin: `left top`
-      }
-    }
+        transformOrigin: `left top`,
+      },
+    };
 
-    const el = ref<HTMLElement>()
+    const el = ref<HTMLElement>();
     /**
      * 初始化大屏容器宽高
      */
     const initSize = () => {
-      return new Promise<void>(resolve => {
+      return new Promise<void>((resolve) => {
         nextTick(() => {
           // region 获取大屏真实尺寸
           if (props.width && props.height) {
-            state.width = props.width
-            state.height = props.height
+            state.width = props.width;
+            state.height = props.height;
           } else {
-            state.width = el.value?.clientWidth
-            state.height = el.value?.clientHeight
+            state.width = el.value?.clientWidth;
+            state.height = el.value?.clientHeight;
           }
           // endregion
 
           // region 获取画布尺寸
           if (!state.originalHeight || !state.originalWidth) {
-            state.originalWidth = window.screen.width
-            state.originalHeight = window.screen.height
+            state.originalWidth = window.screen.width;
+            state.originalHeight = window.screen.height;
           }
           // endregion
-          resolve()
-        })
-      })
-    }
+          resolve();
+        });
+      });
+    };
 
     function initBodyStyle() {
       if (props.bodyOverflowHidden) {
-        bodyOverflowHidden = document.body.style.overflow
-        document.body.style.overflow = 'hidden'
+        bodyOverflowHidden = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
       }
     }
+
     /**
      * 更新大屏容器宽高
      */
     const updateSize = () => {
       if (state.width && state.height) {
-        el.value!.style.width = `${state.width}px`
-        el.value!.style.height = `${state.height}px`
+        el.value!.style.width = `${state.width}px`;
+        el.value!.style.height = `${state.height}px`;
       } else {
-        el.value!.style.width = `${state.originalWidth}px`
-        el.value!.style.height = `${state.originalHeight}px`
+        el.value!.style.width = `${state.originalWidth}px`;
+        el.value!.style.height = `${state.originalHeight}px`;
       }
-    }
+    };
 
     const autoScale = (scale: number) => {
-      if (!props.autoScale) return
-      const domWidth = el.value!.clientWidth
-      const domHeight = el.value!.clientHeight
-      const currentWidth = document.body.clientWidth
-      const currentHeight = document.body.clientHeight
-      el.value!.style.transform = `scale(${scale},${scale})`
-      let mx = Math.max((currentWidth - domWidth * scale) / 2, 0)
-      let my = Math.max((currentHeight - domHeight * scale) / 2, 0)
+      if (!props.autoScale) return;
+      const domWidth = el.value!.clientWidth;
+      const domHeight = el.value!.clientHeight;
+      const currentWidth = document.body.clientWidth;
+      const currentHeight = document.body.clientHeight;
+      el.value!.style.transform = `scale(${scale},${scale})`;
+      let mx = Math.max((currentWidth - domWidth * scale) / 2, 0);
+      let my = Math.max((currentHeight - domHeight * scale) / 2, 0);
       if (typeof props.autoScale === 'object') {
-        !props.autoScale.x && (mx = 0)
-        !props.autoScale.y && (my = 0)
+        !props.autoScale.x && (mx = 0);
+        !props.autoScale.y && (my = 0);
       }
-      el.value!.style.margin = `${my}px ${mx}px`
-    }
+      el.value!.style.margin = `${my}px ${mx}px`;
+    };
     const updateScale = () => {
       // 获取真实视口尺寸
-      const currentWidth = document.body.clientWidth
-      const currentHeight = document.body.clientHeight
+      const currentWidth = document.body.clientWidth;
+      const currentHeight = document.body.clientHeight;
       // 获取大屏最终的宽高
-      const realWidth = state.width || state.originalWidth
-      const realHeight = state.height || state.originalHeight
+      const realWidth = state.width || state.originalWidth;
+      const realHeight = state.height || state.originalHeight;
       // 计算缩放比例
-      const widthScale = currentWidth / +realWidth
-      const heightScale = currentHeight / +realHeight
+      const widthScale = currentWidth / +realWidth;
+      const heightScale = currentHeight / +realHeight;
       // 若要铺满全屏，则按照各自比例缩放
       if (props.fullScreen) {
-        el.value!.style.transform = `scale(${widthScale},${heightScale})`
-        return false
+        el.value!.style.transform = `scale(${widthScale},${heightScale})`;
+        return false;
       }
       // 按照宽高最小比例进行缩放
-      const scale = Math.min(widthScale, heightScale)
-      autoScale(scale)
-    }
+      const scale = Math.min(widthScale, heightScale);
+      autoScale(scale);
+    };
 
     const onResize = debounce(async () => {
-      await initSize()
-      updateSize()
-      updateScale()
-    }, props.delay)
+      await initSize();
+      updateSize();
+      updateScale();
+    }, props.delay);
     const initMutationObserver = () => {
       const observer = (state.observer = new MutationObserver(() => {
-        onResize()
-      }))
+        onResize();
+      }));
       observer.observe(el.value!, {
         attributes: true,
         attributeFilter: ['style'],
-        attributeOldValue: true
-      })
-    }
+        attributeOldValue: true,
+      });
+    };
     onMounted(() => {
-      initBodyStyle()
+      initBodyStyle();
       nextTick(async () => {
-        await initSize()
-        updateSize()
-        updateScale()
-        window.addEventListener('resize', onResize)
-        initMutationObserver()
-      })
-    })
+        await initSize();
+        updateSize();
+        updateScale();
+        window.addEventListener('resize', onResize);
+        initMutationObserver();
+      });
+    });
     onUnmounted(() => {
-      window.removeEventListener('resize', onResize)
-      state.observer?.disconnect()
+      window.removeEventListener('resize', onResize);
+      state.observer?.disconnect();
       if (props.bodyOverflowHidden) {
-        document.body.style.overflow = bodyOverflowHidden
+        document.body.style.overflow = bodyOverflowHidden;
       }
-    })
-    onActivated(updateScale)
+    });
+    onActivated(updateScale);
 
     return () => {
       return h(
         'div',
         {
           className: 'v-screen-box',
-          style: { ...styles.box, ...props.boxStyle }
+          style: { ...styles.box, ...props.boxStyle },
         },
         [
           h(
@@ -239,12 +241,12 @@ export default defineComponent({
             {
               className: 'screen-wrapper',
               style: { ...styles.wrapper, ...props.wrapperStyle },
-              ref: el
+              ref: el,
             },
             slots.default?.()
-          )
+          ),
         ]
-      )
-    }
-  }
-})
+      );
+    };
+  },
+});

@@ -12,6 +12,7 @@
     "@whale-plus/request": "workspace:*",
     "@whale-plus/locale": "workspace:*",
     "@whale-plus/hooks": "workspace:*",
+    "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.8",
     "vue": "^3.5.13",
     "whale-request": "0.0.0-dev.4"

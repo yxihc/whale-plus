@@ -1,3 +1,3 @@
-import VScaleScreen from './component'
+import VScaleScreen from './component';
 
-export default VScaleScreen
+export default VScaleScreen;

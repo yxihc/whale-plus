@@ -1,75 +1,50 @@
 <template>
-  <div>
-    <h1>导航菜单</h1>
-    <ul>
-      <li v-for="(item, index) in hierarchicalRoutes" :key="index">
-        <span>{{ item.title }}</span>
-        <ul v-if="item.children && item.children.length">
-          <li v-for="child in item.children" :key="child.path">
-            <button @click="goToRoute(child.path)">
-              {{ child.title  }}({{child.path}})
-            </button>
-          </li>
-        </ul>
-      </li>
-    </ul>
+  <div class="app-container">
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-panel-left"
+      >
+        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+        <path d="M9 3v18"></path>
+      </svg>
+    </button>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-import { computed } from 'vue';
-
-const router = useRouter();
-
-// 获取所有非隐藏的路由 (假设你想过滤掉某些路由)
-const flatRoutes = computed(() => {
-  return router.getRoutes().filter(r => !r.meta || !r.meta.hidden);
-});
-
-// 构建层级结构
-const buildHierarchy = (routes) => {
-  const hierarchy = {};
-
-  routes.forEach(route => {
-    const pathParts = route.path.split('/').filter(part => part); // 去除空字符串
-    let currentLevel = hierarchy;
-
-    pathParts.forEach((part, index) => {
-      if (!currentLevel[part]) {
-        currentLevel[part] = index === pathParts.length - 1 ?
-          { title: route.meta?.title || part, path: route.path } :
-          { title: part, children: {} };
-      }
-
-      if (index !== pathParts.length - 1) {
-        currentLevel = currentLevel[part].children;
-      }
-    });
-  });
-
-  return hierarchy;
-};
-
-const hierarchicalRoutes = computed(() => {
-  const hierarchy = buildHierarchy(flatRoutes.value);
-
-  // 将对象转换为数组以便于渲染
-  function objectToArray(obj) {
-    return Object.keys(obj).map(key => ({
-      ...obj[key],
-      children: obj[key].children ? objectToArray(obj[key].children) : undefined
-    }));
-  }
-
-  return objectToArray(hierarchy);
-});
-
-function goToRoute(path) {
-  router.push(path);
-}
 </script>
 
-<style scoped>
-/* Add your styles here */
+<style scoped lang="scss">
+.app-container {
+  display: flex;
+  height: 100vh;
+
+  .left-menu {
+    height: 100%;
+
+    :deep(.el-card) {
+      border-radius: 10px !important; /* 修改圆角 */
+    }
+
+    :deep(.el-card__body) {
+      padding: 0;
+    }
+
+    .menu-card {
+      height: calc(100% - 20px);
+      margin-top: 10px;
+      margin-left: 10px;
+      background-color: #fafafa;
+    }
+  }
+}
 </style>

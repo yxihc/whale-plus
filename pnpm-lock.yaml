@@ -567,6 +567,9 @@ importers:
 
   play:
     dependencies:
+      '@element-plus/icons-vue':
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.5.13(typescript@5.4.5))
       '@whale-plus/hooks':
         specifier: workspace:*
         version: link:../packages/hooks
