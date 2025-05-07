@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { uesTestDialog } from './uesTestDialog.ts';
+import { reactive, ref } from 'vue';
+import { uesTestDialog } from './uesTestDialog';
 
 const dialogFormVisible = ref(false);
 
 const testDialog = uesTestDialog();
 
+const xx = reactive(0);
 function showDialog() {
   // dialogFormVisible.value = true;
   testDialog.show({
@@ -19,17 +20,17 @@ function showDialog() {
   <button @click="dialogFormVisible = true">打开弹窗</button>
   <button @click="showDialog">打开弹窗函数式</button>
   <div id="testxxx"></div>
-<!--  <el-dialog v-model="dialogFormVisible">-->
-<!--    divasdasd-->
-<!--    <template #footer>-->
-<!--      <div class="dialog-footer">-->
-<!--        <el-button @click="dialogFormVisible = false">Cancel</el-button>-->
-<!--        <el-button type="primary" @click="dialogFormVisible = false">-->
-<!--          Confirm-->
-<!--        </el-button>-->
-<!--      </div>-->
-<!--    </template>-->
-<!--  </el-dialog>-->
+  <!--  <el-dialog v-model="dialogFormVisible">-->
+  <!--    divasdasd-->
+  <!--    <template #footer>-->
+  <!--      <div class="dialog-footer">-->
+  <!--        <el-button @click="dialogFormVisible = false">Cancel</el-button>-->
+  <!--        <el-button type="primary" @click="dialogFormVisible = false">-->
+  <!--          Confirm-->
+  <!--        </el-button>-->
+  <!--      </div>-->
+  <!--    </template>-->
+  <!--  </el-dialog>-->
 </template>
 
 <style scoped></style>
